@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联邦学习任务管理平台</title>
+    <!-- 引入 ECharts -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --secondary: #7e42ff;
+            --dark-bg: #0a0e17;
+            --darker-bg: #050811;
+            --card-bg: rgba(16, 22, 36, 0.8);
+            --text: #e0e0ff;
+            --text-secondary: #a0a0c0;
+            --success: #00ff9d;
+            --warning: #ffb300;
+            --error: #ff3d71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--dark-bg);
+            color: var(--text);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(28, 58, 173, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(126, 66, 255, 0.1) 0%, transparent 20%),
+                linear-gradient(to bottom, var(--darker-bg), var(--dark-bg));
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(10, 14, 23, 0.7);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin: 30px 0 20px;
+            font-weight: 400;
+            font-size: 1.5rem;
+            border-left: 3px solid var(--secondary);
+            padding-left: 15px;
+        }
+        
+        .dashboard {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .tab-buttons {
+            flex: 0 0 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .tab-button {
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border: 1px solid rgba(126, 66, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-button:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(126, 66, 255, 0.3);
+        }
+        
+        .tab-button.active {
+            background: rgba(126, 66, 255, 0.15);
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(126, 66, 255, 0.4);
+            color: var(--primary);
+        }
+        
+        .tab-button.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--secondary);
+        }
+        
+        .control-panel {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            min-height: 400px;
+        }
+        
+        .control-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .control-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .control-section h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 400;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .control-section h3::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-right: 10px;
+            box-shadow: 0 0 8px var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(5, 8, 17, 0.7);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+        
+        button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        button:hover::before {
+            left: 100%;
+        }
+        
+        button:hover {
+            box-shadow: 0 5px 15px rgba(126, 66, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        button.success {
+            background: linear-gradient(135deg, var(--success), #00b37a);
+        }
+        
+        button.warning {
+            background: linear-gradient(135deg, var(--warning), #ff8c00);
+        }
+        
+        /* 按钮加载状态样式 */
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        button:disabled:hover {
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .btn-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 确保按钮文本和加载状态正确切换 */
+        .btn-text, .btn-loading {
+            display: inline-block;
+        }
+        
+        .chart-btn {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .delete-btn {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--error), #cc2b5e);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .delete-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .clear-logs-btn {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--warning), #ff8c00);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .status-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .task-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .task-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 243, 255, 0.3);
+        }
+        
+        .task-card.running {
+            border-left: 4px solid var(--success);
+        }
+        
+        .task-card.paused {
+            border-left: 4px solid var(--warning);
+        }
+        
+        .task-card.stopped {
+            border-left: 4px solid var(--error);
+        }
+        
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .task-id {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .task-status {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .status-running { 
+            background: var(--success);
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+        }
+        .status-paused { 
+            background: var(--warning);
+            box-shadow: 0 0 10px rgba(255, 179, 0, 0.3);
+        }
+        .status-stopped { 
+            background: var(--error);
+            box-shadow: 0 0 10px rgba(255, 61, 113, 0.3);
+        }
+        
+        .task-info {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .task-info div {
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .task-info div span:first-child {
+            color: var(--text);
+        }
+        
+        .task-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .logs-panel {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+        }
+        
+        .log-entry {
+            padding: 10px;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        
+        .log-entry::before {
+            content: '▶';
+            margin-right: 10px;
+            font-size: 10px;
+            color: var(--primary);
+        }
+        
+        .log-info { color: var(--primary); }
+        .log-warning { color: var(--warning); }
+        .log-error { color: var(--error); }
+        .log-success { color: var(--success); }
+        
+        .message {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            display: none;
+            border-left: 4px solid;
+        }
+        
+        .message.success {
+            background: rgba(0, 255, 157, 0.1);
+            color: var(--success);
+            border-color: var(--success);
+            display: block;
+        }
+        
+        .message.error {
+            background: rgba(255, 61, 113, 0.1);
+            color: var(--error);
+            border-color: var(--error);
+            display: block;
+        }
+        
+        /* 图表模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            margin: 5% auto;
+            padding: 25px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 900px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+            position: relative;
+        }
+        
+        .close {
+            color: var(--primary);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            color: var(--secondary);
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+        }
+        
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(5, 8, 17, 0.5);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* 在 dashboard.html 的 CSS 部分添加下拉菜单样式 */
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(5, 8, 17, 0.7);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        /* 下拉菜单选项样式 */
+        select option {
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>联邦学习任务管理平台</h1>
+        
+        <div id="messageArea"></div>
+        
+        <div class="dashboard">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="create">创建联邦任务</button>
+                <button class="tab-button" data-tab="join">加入联邦任务</button>
+                <button class="tab-button" data-tab="leave">退出联邦任务</button>
+            </div>
+            
+            <div class="control-panel">
+                <div class="control-section active" id="create-section">
+                    <h3>创建联邦任务</h3>
+                    <div class="form-group">
+                        <label for="taskId">任务编号:</label>
+                        <input type="text" id="taskId" placeholder="输入唯一任务编号">
+                    </div>
+                    <div class="form-group">
+                        <label for="taskName">任务名称:</label>
+                        <input type="text" id="taskName" placeholder="输入任务名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDesc">任务描述:</label>
+                        <input type="text" id="taskDesc" placeholder="输入任务描述（可选）">
+                    </div>
+                    
+                    <!-- 新增：模型结构选择 -->
+                    <div class="form-group">
+                        <label for="modelArchitecture">模型结构:</label>
+                        <select id="modelArchitecture">
+                            <option value="r8">ResNet8</option>
+                            <option value="r18">ResNet18</option>
+                            <option value="r34">ResNet34</option>
+                            <option value="CNN">CNN</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 新增：数据集选择 -->
+                    <div class="form-group">
+                        <label for="dataset">数据集:</label>
+                        <select id="dataset">
+                            <option value="CIFAR10">CIFAR10</option>
+                            <option value="MNIST">MNIST</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 新增：训练轮数 -->
+                    <div class="form-group">
+                        <label for="epochs">训练轮数:</label>
+                        <input type="number" id="epochs" value="2000" min="1" max="10000" placeholder="输入训练轮数">
+                    </div>
+                    
+                    <!-- 新增：奖金池 -->
+                    <div class="form-group">
+                        <label for="rewardPool">任务奖金池:</label>
+                        <input type="number" id="rewardPool" value="0.00" min="0" step="0.01" placeholder="输入奖金池金额">
+                    </div>
+                    
+                    <button id="createTaskBtn" onclick="createTask()" class="success">
+                        <span class="btn-text">创建联邦任务</span>
+                        <span class="btn-loading" style="display: none;">
+                            <span class="spinner"></span> 创建中...
+                        </span>
+                    </button>
+                </div>
+                
+                <div class="control-section" id="join-section">
+                    <h3>加入联邦任务</h3>
+                    <div class="form-group">
+                        <label for="joinTaskId">任务编号:</label>
+                        <input type="text" id="joinTaskId" placeholder="输入要加入的任务编号">
+                    </div>
+                    <div class="form-group">
+                        <label for="userId">用户ID:</label>
+                        <input type="number" id="userId" placeholder="输入用户ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">用户名:</label>
+                        <input type="text" id="userName" placeholder="输入用户名（可选）">
+                    </div>
+                    <button onclick="joinTask()" class="success">加入联邦任务</button>
+                </div>
+                
+                <div class="control-section" id="leave-section">
+                    <h3>退出联邦任务</h3>
+                    <div class="form-group">
+                        <label for="leaveTaskId">任务编号:</label>
+                        <input type="text" id="leaveTaskId" placeholder="输入要退出的任务编号">
+                    </div>
+                    <div class="form-group">
+                        <label for="leaveUserId">用户ID:</label>
+                        <input type="number" id="leaveUserId" placeholder="输入用户ID">
+                    </div>
+                    <button onclick="leaveTask()" class="warning">退出联邦任务</button>
+                </div>
+            </div>
+        </div>
+        
+        <h2>任务状态监控</h2>
+        <button class="clear-logs-btn" onclick="clearLogs()">清空所有日志</button>
+        <div class="status-panel" id="statusPanel">
+            <!-- 任务状态卡片将通过JavaScript动态加载 -->
+        </div>
+        
+        <h2>系统日志</h2>
+        <div class="logs-panel" id="logsPanel">
+            <!-- 系统日志将通过JavaScript动态加载 -->
+        </div>
+    </div>
+
+    <!-- 图表模态框 -->
+    <div id="chartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="chartTitle">准确度变化历史</h2>
+            <div id="accuracyChart" class="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        // 标签切换功能
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // 移除所有按钮的active类
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // 添加active类到当前按钮
+                this.classList.add('active');
+                
+                // 隐藏所有控制部分
+                document.querySelectorAll('.control-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // 显示对应的控制部分
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(`${tabId}-section`).classList.add('active');
+            });
+        });
+
+        // 图表模态框控制
+        const modal = document.getElementById('chartModal');
+        const closeBtn = document.querySelector('.close');
+        
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function showMessage(message, type = 'success') {
+            const messageArea = document.getElementById('messageArea');
+            messageArea.innerHTML = `<div class="message ${type}">${message}</div>`;
+            setTimeout(() => {
+                messageArea.innerHTML = '';
+            }, 5000);
+        }
+
+        async function createTask() {
+            const taskId = document.getElementById('taskId').value;
+            const taskName = document.getElementById('taskName').value;
+            const taskDesc = document.getElementById('taskDesc').value;
+            
+            // 获取新参数
+            const modelArchitecture = document.getElementById('modelArchitecture').value;
+            const dataset = document.getElementById('dataset').value;
+            const epochs = document.getElementById('epochs').value;
+            const rewardPool = document.getElementById('rewardPool').value;
+            
+            const createBtn = document.getElementById('createTaskBtn');
+            const btnText = createBtn.querySelector('.btn-text');
+            const btnLoading = createBtn.querySelector('.btn-loading');
+            
+            if (!taskId || !taskName) {
+                showMessage('任务编号和名称不能为空', 'error');
+                return;
+            }
+            
+            // 参数验证
+            if (epochs <= 0) {
+                showMessage('训练轮数必须大于0', 'error');
+                return;
+            }
+            
+            if (rewardPool < 0) {
+                showMessage('奖金池不能为负数', 'error');
+                return;
+            }
+            
+            // 禁用按钮并显示加载状态
+            createBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'flex';
+            
+            try {
+                const response = await fetch('/api/tasks/create/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        task_id: taskId,
+                        task_name: taskName,
+                        description: taskDesc,
+                        model_architecture: modelArchitecture,
+                        dataset: dataset,
+                        epochs: parseInt(epochs),
+                        reward_pool: parseFloat(rewardPool)
+                    })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showMessage(result.message);
+                    // 清空表单
+                    document.getElementById('taskId').value = '';
+                    document.getElementById('taskName').value = '';
+                    document.getElementById('taskDesc').value = '';
+                    document.getElementById('epochs').value = '2000';
+                    document.getElementById('rewardPool').value = '0.00';
+                    loadStatus();
+                    loadLogs();
+                } else {
+                    showMessage(result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('网络错误: ' + error.message, 'error');
+            } finally {
+                // 无论成功或失败，都重新启用按钮
+                createBtn.disabled = false;
+                btnText.style.display = 'inline-block';
+                btnLoading.style.display = 'none';
+            }
+        }
+
+        async function joinTask() {
+            const taskId = document.getElementById('joinTaskId').value;
+            const userId = document.getElementById('userId').value;
+            const userName = document.getElementById('userName').value || `用户${userId}`;
+            
+            if (!taskId || !userId) {
+                showMessage('任务编号和用户ID不能为空', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/tasks/join/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        task_id: taskId,
+                        user_id: userId,
+                        user_name: userName
+                    })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showMessage(result.message);
+                    document.getElementById('joinTaskId').value = '';
+                    document.getElementById('userId').value = '';
+                    document.getElementById('userName').value = '';
+                    loadStatus();
+                    loadLogs();
+                } else {
+                    showMessage(result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('网络错误: ' + error.message, 'error');
+            }
+        }
+
+        async function leaveTask() {
+            const taskId = document.getElementById('leaveTaskId').value;
+            const userId = document.getElementById('leaveUserId').value;
+            
+            if (!taskId || !userId) {
+                showMessage('任务编号和用户ID不能为空', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/tasks/leave/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        task_id: taskId,
+                        user_id: userId
+                    })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showMessage(result.message);
+                    document.getElementById('leaveTaskId').value = '';
+                    document.getElementById('leaveUserId').value = '';
+                    loadStatus();
+                    loadLogs();
+                } else {
+                    showMessage(result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('网络错误: ' + error.message, 'error');
+            }
+        }
+
+        async function deleteTask(taskId) {
+            if (!confirm(`确定要删除任务 ${taskId} 吗？此操作将永久删除该任务的所有数据，包括日志和准确度记录。`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/tasks/delete/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        task_id: taskId
+                    })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showMessage(result.message);
+                    loadStatus();
+                    loadLogs();
+                } else {
+                    showMessage(result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('网络错误: ' + error.message, 'error');
+            }
+        }
+
+        async function clearLogs() {
+            if (!confirm('确定要清空所有日志记录吗？此操作不可恢复。')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/tasks/clear-logs/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showMessage(result.message);
+                    loadLogs();
+                } else {
+                    showMessage(result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('网络错误: ' + error.message, 'error');
+            }
+        }
+
+        async function showAccuracyChart(taskId, taskName) {
+            try {
+                const response = await fetch(`/api/tasks/accuracy-history/?task_id=${taskId}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    // 显示模态框
+                    document.getElementById('chartTitle').textContent = `${taskName} - 准确度变化历史`;
+                    modal.style.display = 'block';
+                    
+                    // 绘制图表
+                    drawAccuracyChart(result.accuracy_history, taskName);
+                } else {
+                    showMessage(result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('获取准确度历史失败: ' + error.message, 'error');
+            }
+        }
+
+        function drawAccuracyChart(accuracyHistory, taskName) {
+            const chartDom = document.getElementById('accuracyChart');
+            const myChart = echarts.init(chartDom);
+            
+            // 提取轮次和准确度数据
+            const epochs = accuracyHistory.map(item => item.epoch);
+            const accuracies = accuracyHistory.map(item => item.accuracy);
+            
+            const option = {
+                backgroundColor: 'transparent',
+                title: {
+                    text: `${taskName} - 准确度变化趋势`,
+                    textStyle: {
+                        color: '#e0e0ff',
+                        fontSize: 18
+                    },
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: function(params) {
+                        return `轮次: ${params[0].name}<br/>准确度: ${params[0].value}%`;
+                    },
+                    backgroundColor: 'rgba(16, 22, 36, 0.9)',
+                    borderColor: '#7e42ff',
+                    textStyle: {
+                        color: '#e0e0ff'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: epochs,
+                    name: '训练轮次',
+                    nameTextStyle: {
+                        color: '#a0a0c0'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#7e42ff'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#e0e0ff'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '准确度 (%)',
+                    min: 0,
+                    max: 100,
+                    nameTextStyle: {
+                        color: '#a0a0c0'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#7e42ff'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#e0e0ff',
+                        formatter: '{value}%'
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: 'rgba(126, 66, 255, 0.2)',
+                            type: 'dashed'
+                        }
+                    }
+                },
+                series: [
+                    {
+                        name: '准确度',
+                        type: 'line',
+                        data: accuracies,
+                        smooth: true,
+                        symbol: 'circle',
+                        symbolSize: 6,
+                        lineStyle: {
+                            color: '#00f3ff',
+                            width: 3
+                        },
+                        itemStyle: {
+                            color: '#00f3ff',
+                            borderColor: '#ffffff',
+                            borderWidth: 1
+                        },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: 'rgba(0, 243, 255, 0.3)' },
+                                { offset: 1, color: 'rgba(0, 243, 255, 0.1)' }
+                            ])
+                        },
+                        markPoint: {
+                            data: [
+                                { type: 'max', name: '最大值' },
+                                { type: 'min', name: '最小值' }
+                            ],
+                            label: {
+                                color: '#ffffff',
+                                backgroundColor: 'rgba(16, 22, 36, 0.8)'
+                            }
+                        }
+                    }
+                ]
+            };
+            
+            myChart.setOption(option);
+            
+            // 响应窗口大小变化
+            window.addEventListener('resize', function() {
+                myChart.resize();
+            });
+        }
+        async function loadStatus() {
+            try {
+                const response = await fetch('/api/tasks/status/');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const statusPanel = document.getElementById('statusPanel');
+                    statusPanel.innerHTML = '';
+                    
+                    if (result.tasks.length === 0) {
+                        statusPanel.innerHTML = '<div class="task-card">暂无联邦任务</div>';
+                        return;
+                    }
+                    
+                    result.tasks.forEach(task => {
+                        // 直接使用任务状态，无需额外计算
+                        const statusClass = task.status || 'stopped';
+                        
+                        // 正确显示训练状态
+                        let trainingStatus = '停止';
+                        if (task.is_running) {
+                            trainingStatus = task.training_paused ? '暂停' : '进行中';
+                        }
+                        
+                        // 检查任务是否正在运行（内存中）
+                        const isRunning = task.is_running && !task.training_paused;
+                        
+                        const card = `
+                            <div class="task-card ${statusClass}">
+                                <div class="task-header">
+                                    <span class="task-id">${task.task_id}</span>
+                                    <span class="task-status status-${statusClass}">
+                                        ${statusClass === 'running' ? '运行中' : 
+                                        statusClass === 'paused' ? '已暂停' : '已停止'}
+                                    </span>
+                                </div>
+                                <div class="task-info">
+                                    <div><span>任务名称:</span> <span>${task.task_name || 'N/A'}</span></div>
+                                    <div><span>当前轮次:</span> <span>${task.current_epoch || 0}</span></div>
+                                    <div><span>活跃用户:</span> <span>${task.active_users || 0}</span></div>
+                                    <div><span>训练状态:</span> <span>${trainingStatus}</span></div>
+                                    <div><span>创建时间:</span> <span>${task.created_at ? new Date(task.created_at).toLocaleString() : 'N/A'}</span></div>
+                                </div>
+                                <div class="task-actions">
+                                    <button class="chart-btn" onclick="showAccuracyChart('${task.task_id}', '${task.task_name}')">
+                                        查看准确度历史
+                                    </button>
+                                    <button class="delete-btn" onclick="deleteTask('${task.task_id}')" ${isRunning ? 'disabled' : ''}>
+                                        ${isRunning ? '运行中不可删除' : '删除任务'}
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        statusPanel.innerHTML += card;
+                    });
+                }
+            } catch (error) {
+                console.error('加载状态失败:', error);
+                statusPanel.innerHTML = '<div class="task-card">加载任务状态失败</div>';
+            }
+        }
+
+        async function loadLogs() {
+            try {
+                const response = await fetch('/api/tasks/logs/');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const logsPanel = document.getElementById('logsPanel');
+                    logsPanel.innerHTML = '';
+                    
+                    if (result.logs.length === 0) {
+                        logsPanel.innerHTML = '<div class="log-entry log-info">暂无系统日志</div>';
+                        return;
+                    }
+                    
+                    result.logs.forEach(log => {
+                        // 根据日志级别确定CSS类
+                        let logClass = 'log-info';
+                        if (log.level === 'warning') logClass = 'log-warning';
+                        else if (log.level === 'error') logClass = 'log-error';
+                        else if (log.level === 'success') logClass = 'log-success';
+                        
+                        // 格式化时间
+                        const logTime = new Date(log.created_at).toLocaleTimeString('zh-CN');
+                        
+                        const logEntry = `
+                            <div class="log-entry ${logClass}">
+                                <strong>[${logTime}]</strong> ${log.task_id} - ${log.level_display}: ${log.message}
+                            </div>
+                        `;
+                        logsPanel.innerHTML += logEntry;
+                    });
+                }
+            } catch (error) {
+                console.error('加载日志失败:', error);
+                document.getElementById('logsPanel').innerHTML = 
+                    '<div class="log-entry log-error">加载系统日志失败</div>';
+            }
+        }
+
+        // 页面加载时获取状态和日志，并每10秒刷新一次
+        document.addEventListener('DOMContentLoaded', function() {
+            loadStatus();
+            loadLogs();
+            setInterval(loadStatus, 10000);
+            setInterval(loadLogs, 10000);
+        });
+
+        // 页面卸载时清空日志
+        window.addEventListener('beforeunload', function() {
+            // 注意：这里不会等待异步请求完成
+            fetch('/api/tasks/clear-logs/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                // 使用 keepalive 确保请求在页面卸载后仍然发送
+                keepalive: true
+            }).catch(err => console.error('清空日志失败:', err));
+        });
+    </script>
+</body>
+</html>
