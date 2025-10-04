@@ -1,0 +1,1429 @@
+{
+  "user_info": {
+    "0": {
+      "user_id": 0,
+      "user_name": "user_0",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        151,
+        408,
+        206,
+        24
+      ],
+      "data_block_count": 4
+    },
+    "1": {
+      "user_id": 1,
+      "user_name": "user_1",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        241,
+        233,
+        273,
+        356,
+        131
+      ],
+      "data_block_count": 5
+    },
+    "2": {
+      "user_id": 2,
+      "user_name": "user_2",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        305,
+        187
+      ],
+      "data_block_count": 2
+    },
+    "3": {
+      "user_id": 3,
+      "user_name": "user_3",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        464,
+        162,
+        309,
+        182,
+        109,
+        283,
+        264,
+        134
+      ],
+      "data_block_count": 8
+    },
+    "4": {
+      "user_id": 4,
+      "user_name": "user_4",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        232,
+        350,
+        208,
+        281,
+        467,
+        124,
+        491,
+        351,
+        280
+      ],
+      "data_block_count": 9
+    },
+    "5": {
+      "user_id": 5,
+      "user_name": "user_5",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        179,
+        236,
+        145,
+        46,
+        492,
+        351,
+        407
+      ],
+      "data_block_count": 7
+    },
+    "6": {
+      "user_id": 6,
+      "user_name": "user_6",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        248,
+        133,
+        83,
+        328,
+        439,
+        393,
+        476
+      ],
+      "data_block_count": 7
+    },
+    "7": {
+      "user_id": 7,
+      "user_name": "user_7",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        103,
+        380,
+        189,
+        29,
+        318,
+        38
+      ],
+      "data_block_count": 6
+    },
+    "8": {
+      "user_id": 8,
+      "user_name": "user_8",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        204,
+        69,
+        171,
+        203,
+        431,
+        331
+      ],
+      "data_block_count": 6
+    },
+    "9": {
+      "user_id": 9,
+      "user_name": "user_9",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        359,
+        324,
+        358,
+        288,
+        139,
+        213,
+        288
+      ],
+      "data_block_count": 7
+    },
+    "10": {
+      "user_id": 10,
+      "user_name": "user_10",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        499,
+        46,
+        83
+      ],
+      "data_block_count": 3
+    },
+    "11": {
+      "user_id": 11,
+      "user_name": "user_11",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        234,
+        383,
+        103,
+        110,
+        35,
+        181,
+        295,
+        10
+      ],
+      "data_block_count": 8
+    },
+    "12": {
+      "user_id": 12,
+      "user_name": "user_12",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        321,
+        129,
+        483,
+        197
+      ],
+      "data_block_count": 4
+    },
+    "13": {
+      "user_id": 13,
+      "user_name": "user_13",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        171,
+        121,
+        42,
+        451,
+        316,
+        192,
+        410,
+        76,
+        403,
+        303
+      ],
+      "data_block_count": 10
+    },
+    "14": {
+      "user_id": 14,
+      "user_name": "user_14",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        101,
+        61,
+        362,
+        69,
+        146,
+        374
+      ],
+      "data_block_count": 6
+    },
+    "15": {
+      "user_id": 15,
+      "user_name": "user_15",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        280,
+        404,
+        218,
+        373,
+        415,
+        129,
+        406
+      ],
+      "data_block_count": 7
+    },
+    "16": {
+      "user_id": 16,
+      "user_name": "user_16",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        79,
+        434,
+        475,
+        356,
+        192,
+        332,
+        151
+      ],
+      "data_block_count": 7
+    },
+    "17": {
+      "user_id": 17,
+      "user_name": "user_17",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        388,
+        182,
+        183,
+        450
+      ],
+      "data_block_count": 4
+    },
+    "18": {
+      "user_id": 18,
+      "user_name": "user_18",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        98,
+        341,
+        244
+      ],
+      "data_block_count": 3
+    },
+    "19": {
+      "user_id": 19,
+      "user_name": "user_19",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        323,
+        276,
+        413,
+        480,
+        341
+      ],
+      "data_block_count": 5
+    },
+    "20": {
+      "user_id": 20,
+      "user_name": "user_20",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        171,
+        174
+      ],
+      "data_block_count": 2
+    },
+    "21": {
+      "user_id": 21,
+      "user_name": "user_21",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        141,
+        273,
+        192,
+        249
+      ],
+      "data_block_count": 4
+    },
+    "22": {
+      "user_id": 22,
+      "user_name": "user_22",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        12,
+        357,
+        312,
+        211,
+        10,
+        186,
+        416,
+        472,
+        287
+      ],
+      "data_block_count": 9
+    },
+    "23": {
+      "user_id": 23,
+      "user_name": "user_23",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        200,
+        186,
+        361,
+        387,
+        28,
+        117,
+        253,
+        94,
+        202
+      ],
+      "data_block_count": 9
+    },
+    "24": {
+      "user_id": 24,
+      "user_name": "user_24",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        379,
+        120,
+        233
+      ],
+      "data_block_count": 3
+    },
+    "25": {
+      "user_id": 25,
+      "user_name": "user_25",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        263,
+        443,
+        367,
+        17,
+        363,
+        265
+      ],
+      "data_block_count": 6
+    },
+    "26": {
+      "user_id": 26,
+      "user_name": "user_26",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        182,
+        176,
+        216,
+        324,
+        118,
+        41,
+        194
+      ],
+      "data_block_count": 7
+    },
+    "27": {
+      "user_id": 27,
+      "user_name": "user_27",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        307,
+        60,
+        292,
+        186,
+        356,
+        232
+      ],
+      "data_block_count": 6
+    },
+    "28": {
+      "user_id": 28,
+      "user_name": "user_28",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        313,
+        394,
+        421,
+        227,
+        25,
+        46,
+        467,
+        458
+      ],
+      "data_block_count": 8
+    },
+    "29": {
+      "user_id": 29,
+      "user_name": "user_29",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        478,
+        340,
+        381,
+        266,
+        15,
+        219
+      ],
+      "data_block_count": 6
+    },
+    "30": {
+      "user_id": 30,
+      "user_name": "user_30",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        394,
+        158,
+        299,
+        218,
+        493,
+        469,
+        386,
+        165,
+        397
+      ],
+      "data_block_count": 9
+    },
+    "31": {
+      "user_id": 31,
+      "user_name": "user_31",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        89,
+        153,
+        159,
+        394,
+        359,
+        325,
+        128,
+        456,
+        272
+      ],
+      "data_block_count": 9
+    },
+    "32": {
+      "user_id": 32,
+      "user_name": "user_32",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        279,
+        340,
+        115
+      ],
+      "data_block_count": 3
+    },
+    "33": {
+      "user_id": 33,
+      "user_name": "user_33",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        332,
+        438,
+        152,
+        353,
+        36
+      ],
+      "data_block_count": 5
+    },
+    "34": {
+      "user_id": 34,
+      "user_name": "user_34",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        294,
+        357,
+        195
+      ],
+      "data_block_count": 3
+    },
+    "35": {
+      "user_id": 35,
+      "user_name": "user_35",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        206,
+        39,
+        93
+      ],
+      "data_block_count": 3
+    },
+    "36": {
+      "user_id": 36,
+      "user_name": "user_36",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        73,
+        161,
+        128,
+        309,
+        476,
+        128,
+        420,
+        12
+      ],
+      "data_block_count": 8
+    },
+    "37": {
+      "user_id": 37,
+      "user_name": "user_37",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        72,
+        425,
+        334,
+        408
+      ],
+      "data_block_count": 4
+    },
+    "38": {
+      "user_id": 38,
+      "user_name": "user_38",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        267,
+        105,
+        284,
+        237,
+        60,
+        25,
+        393,
+        356,
+        226,
+        221
+      ],
+      "data_block_count": 10
+    },
+    "39": {
+      "user_id": 39,
+      "user_name": "user_39",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        300,
+        274,
+        213,
+        206,
+        295,
+        389,
+        51,
+        198,
+        343
+      ],
+      "data_block_count": 9
+    },
+    "40": {
+      "user_id": 40,
+      "user_name": "user_40",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        151,
+        407,
+        357,
+        448,
+        175,
+        181,
+        365,
+        240,
+        347
+      ],
+      "data_block_count": 9
+    },
+    "41": {
+      "user_id": 41,
+      "user_name": "user_41",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        63,
+        398,
+        196,
+        272,
+        53,
+        433,
+        202
+      ],
+      "data_block_count": 7
+    },
+    "42": {
+      "user_id": 42,
+      "user_name": "user_42",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        223,
+        253,
+        217,
+        29,
+        28,
+        396,
+        228,
+        61,
+        167,
+        446
+      ],
+      "data_block_count": 10
+    },
+    "43": {
+      "user_id": 43,
+      "user_name": "user_43",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        321,
+        413
+      ],
+      "data_block_count": 2
+    },
+    "44": {
+      "user_id": 44,
+      "user_name": "user_44",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        42,
+        47,
+        447,
+        137,
+        377,
+        470
+      ],
+      "data_block_count": 6
+    },
+    "45": {
+      "user_id": 45,
+      "user_name": "user_45",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        208,
+        288,
+        291,
+        236,
+        408
+      ],
+      "data_block_count": 5
+    },
+    "46": {
+      "user_id": 46,
+      "user_name": "user_46",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        459,
+        465,
+        56,
+        46
+      ],
+      "data_block_count": 4
+    },
+    "47": {
+      "user_id": 47,
+      "user_name": "user_47",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        450,
+        1,
+        197,
+        293,
+        51,
+        132,
+        491,
+        487,
+        368,
+        101
+      ],
+      "data_block_count": 10
+    },
+    "48": {
+      "user_id": 48,
+      "user_name": "user_48",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        317,
+        157,
+        208,
+        344,
+        159
+      ],
+      "data_block_count": 5
+    },
+    "49": {
+      "user_id": 49,
+      "user_name": "user_49",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        129,
+        334,
+        179,
+        106,
+        481
+      ],
+      "data_block_count": 5
+    },
+    "50": {
+      "user_id": 50,
+      "user_name": "user_50",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        373,
+        215,
+        189,
+        32,
+        485,
+        261,
+        210,
+        154
+      ],
+      "data_block_count": 8
+    },
+    "51": {
+      "user_id": 51,
+      "user_name": "user_51",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        446,
+        241,
+        472,
+        211,
+        329,
+        183,
+        18,
+        479
+      ],
+      "data_block_count": 8
+    },
+    "52": {
+      "user_id": 52,
+      "user_name": "user_52",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        104,
+        396,
+        144,
+        175,
+        129,
+        40,
+        451
+      ],
+      "data_block_count": 7
+    },
+    "53": {
+      "user_id": 53,
+      "user_name": "user_53",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        433,
+        333,
+        347,
+        81,
+        257,
+        243,
+        356,
+        302,
+        300
+      ],
+      "data_block_count": 9
+    },
+    "54": {
+      "user_id": 54,
+      "user_name": "user_54",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        59,
+        237
+      ],
+      "data_block_count": 2
+    },
+    "55": {
+      "user_id": 55,
+      "user_name": "user_55",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        342,
+        484,
+        346,
+        55,
+        218,
+        242,
+        132
+      ],
+      "data_block_count": 7
+    },
+    "56": {
+      "user_id": 56,
+      "user_name": "user_56",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        36,
+        276,
+        22,
+        154,
+        407,
+        163,
+        178,
+        186,
+        178,
+        366
+      ],
+      "data_block_count": 10
+    },
+    "57": {
+      "user_id": 57,
+      "user_name": "user_57",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        428,
+        46,
+        218
+      ],
+      "data_block_count": 3
+    },
+    "58": {
+      "user_id": 58,
+      "user_name": "user_58",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        172,
+        342,
+        139,
+        284,
+        94,
+        382,
+        431,
+        228,
+        13,
+        231
+      ],
+      "data_block_count": 10
+    },
+    "59": {
+      "user_id": 59,
+      "user_name": "user_59",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        110,
+        394,
+        59,
+        338,
+        326,
+        96,
+        466,
+        94
+      ],
+      "data_block_count": 8
+    },
+    "60": {
+      "user_id": 60,
+      "user_name": "user_60",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        349,
+        185,
+        419,
+        325,
+        395,
+        220,
+        56,
+        155,
+        465,
+        135
+      ],
+      "data_block_count": 10
+    },
+    "61": {
+      "user_id": 61,
+      "user_name": "user_61",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        23,
+        197
+      ],
+      "data_block_count": 2
+    },
+    "62": {
+      "user_id": 62,
+      "user_name": "user_62",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        466,
+        429,
+        469,
+        50,
+        19,
+        444,
+        494,
+        104,
+        406,
+        489
+      ],
+      "data_block_count": 10
+    },
+    "63": {
+      "user_id": 63,
+      "user_name": "user_63",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        210,
+        163,
+        276,
+        160,
+        302,
+        59,
+        406
+      ],
+      "data_block_count": 7
+    },
+    "64": {
+      "user_id": 64,
+      "user_name": "user_64",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        91,
+        233,
+        348,
+        158,
+        48,
+        310,
+        217,
+        261,
+        214,
+        0
+      ],
+      "data_block_count": 10
+    },
+    "65": {
+      "user_id": 65,
+      "user_name": "user_65",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        240,
+        413,
+        172,
+        481,
+        27
+      ],
+      "data_block_count": 5
+    },
+    "66": {
+      "user_id": 66,
+      "user_name": "user_66",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        234,
+        313
+      ],
+      "data_block_count": 2
+    },
+    "67": {
+      "user_id": 67,
+      "user_name": "user_67",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        136,
+        132,
+        435,
+        60
+      ],
+      "data_block_count": 4
+    },
+    "68": {
+      "user_id": 68,
+      "user_name": "user_68",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        113,
+        182,
+        264
+      ],
+      "data_block_count": 3
+    },
+    "69": {
+      "user_id": 69,
+      "user_name": "user_69",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        245,
+        307,
+        134
+      ],
+      "data_block_count": 3
+    },
+    "70": {
+      "user_id": 70,
+      "user_name": "user_70",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        253,
+        402,
+        444,
+        166,
+        450,
+        415,
+        148,
+        463,
+        73,
+        443
+      ],
+      "data_block_count": 10
+    },
+    "71": {
+      "user_id": 71,
+      "user_name": "user_71",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        133,
+        93,
+        81,
+        94,
+        222,
+        162,
+        365,
+        55,
+        252,
+        216
+      ],
+      "data_block_count": 10
+    },
+    "72": {
+      "user_id": 72,
+      "user_name": "user_72",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        465,
+        103
+      ],
+      "data_block_count": 2
+    },
+    "73": {
+      "user_id": 73,
+      "user_name": "user_73",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        455,
+        85,
+        280,
+        208,
+        313,
+        427
+      ],
+      "data_block_count": 6
+    },
+    "74": {
+      "user_id": 74,
+      "user_name": "user_74",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        193,
+        306,
+        443,
+        386,
+        274,
+        98,
+        481,
+        283
+      ],
+      "data_block_count": 8
+    },
+    "75": {
+      "user_id": 75,
+      "user_name": "user_75",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        103,
+        251,
+        300,
+        64,
+        469,
+        18
+      ],
+      "data_block_count": 6
+    },
+    "76": {
+      "user_id": 76,
+      "user_name": "user_76",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        150,
+        148,
+        420,
+        216,
+        469,
+        87,
+        233,
+        426,
+        233
+      ],
+      "data_block_count": 9
+    },
+    "77": {
+      "user_id": 77,
+      "user_name": "user_77",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        294,
+        261
+      ],
+      "data_block_count": 2
+    },
+    "78": {
+      "user_id": 78,
+      "user_name": "user_78",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        463,
+        143,
+        410,
+        91,
+        242,
+        165,
+        216
+      ],
+      "data_block_count": 7
+    },
+    "79": {
+      "user_id": 79,
+      "user_name": "user_79",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        133,
+        422,
+        418,
+        70,
+        464,
+        359,
+        428
+      ],
+      "data_block_count": 7
+    },
+    "80": {
+      "user_id": 80,
+      "user_name": "user_80",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        297,
+        32,
+        206,
+        218,
+        169,
+        304
+      ],
+      "data_block_count": 6
+    },
+    "81": {
+      "user_id": 81,
+      "user_name": "user_81",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        224,
+        114,
+        362,
+        379
+      ],
+      "data_block_count": 4
+    },
+    "82": {
+      "user_id": 82,
+      "user_name": "user_82",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        377,
+        320,
+        214,
+        466
+      ],
+      "data_block_count": 4
+    },
+    "83": {
+      "user_id": 83,
+      "user_name": "user_83",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        472,
+        114,
+        341,
+        427,
+        54,
+        147,
+        34,
+        362
+      ],
+      "data_block_count": 8
+    },
+    "84": {
+      "user_id": 84,
+      "user_name": "user_84",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        13,
+        390,
+        142,
+        459,
+        216
+      ],
+      "data_block_count": 5
+    },
+    "85": {
+      "user_id": 85,
+      "user_name": "user_85",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        255,
+        186,
+        429,
+        80
+      ],
+      "data_block_count": 4
+    },
+    "86": {
+      "user_id": 86,
+      "user_name": "user_86",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        273,
+        273,
+        140,
+        11,
+        436,
+        299,
+        360,
+        470,
+        486
+      ],
+      "data_block_count": 9
+    },
+    "87": {
+      "user_id": 87,
+      "user_name": "user_87",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        170,
+        214,
+        373,
+        46,
+        111,
+        316
+      ],
+      "data_block_count": 6
+    },
+    "88": {
+      "user_id": 88,
+      "user_name": "user_88",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        352,
+        55,
+        462,
+        319,
+        223,
+        82,
+        277
+      ],
+      "data_block_count": 7
+    },
+    "89": {
+      "user_id": 89,
+      "user_name": "user_89",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        240,
+        311,
+        407,
+        352,
+        306,
+        315
+      ],
+      "data_block_count": 6
+    },
+    "90": {
+      "user_id": 90,
+      "user_name": "user_90",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        29,
+        280,
+        333,
+        387,
+        211,
+        431,
+        76,
+        493,
+        217,
+        291
+      ],
+      "data_block_count": 10
+    },
+    "91": {
+      "user_id": 91,
+      "user_name": "user_91",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        303,
+        153,
+        119,
+        144,
+        308,
+        140,
+        99,
+        306
+      ],
+      "data_block_count": 8
+    },
+    "92": {
+      "user_id": 92,
+      "user_name": "user_92",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        18,
+        180,
+        233
+      ],
+      "data_block_count": 3
+    },
+    "93": {
+      "user_id": 93,
+      "user_name": "user_93",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        467,
+        487,
+        58,
+        201,
+        120,
+        61,
+        295
+      ],
+      "data_block_count": 7
+    },
+    "94": {
+      "user_id": 94,
+      "user_name": "user_94",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        90,
+        118,
+        255,
+        452,
+        384,
+        317,
+        35,
+        228,
+        162,
+        236
+      ],
+      "data_block_count": 10
+    },
+    "95": {
+      "user_id": 95,
+      "user_name": "user_95",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        381,
+        250,
+        402,
+        385,
+        472,
+        357
+      ],
+      "data_block_count": 6
+    },
+    "96": {
+      "user_id": 96,
+      "user_name": "user_96",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        331,
+        153,
+        67,
+        100,
+        220,
+        491,
+        85,
+        475,
+        293,
+        258
+      ],
+      "data_block_count": 10
+    },
+    "97": {
+      "user_id": 97,
+      "user_name": "user_97",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        360,
+        286,
+        342,
+        187
+      ],
+      "data_block_count": 4
+    },
+    "98": {
+      "user_id": 98,
+      "user_name": "user_98",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        264,
+        498
+      ],
+      "data_block_count": 2
+    },
+    "99": {
+      "user_id": 99,
+      "user_name": "user_99",
+      "virtual_coins": 100,
+      "assigned_data_indices": [
+        440,
+        3,
+        251,
+        122,
+        51,
+        332,
+        297
+      ],
+      "data_block_count": 7
+    }
+  }
+}
